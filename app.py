@@ -37,5 +37,6 @@ def upload():
     return send_file(pdf_file, as_attachment=True, download_name="DataRedone_Keyword_Report.pdf")
 
 # Ensure this works on gunicorn
-if __name__ != "__main__":
-    gunicorn_app = app
+if __name__ == "__main__":
+    app.run()
+
