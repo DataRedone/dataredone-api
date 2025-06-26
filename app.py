@@ -38,5 +38,5 @@ def upload():
 
 # Ensure this works on gunicorn
 if __name__ == "__main__":
-gunicorn_app = app
+    gunicorn_app = app
 
