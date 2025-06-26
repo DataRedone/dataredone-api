@@ -3,8 +3,10 @@ from jinja2 import Template
 from weasyprint import HTML
 import pandas as pd
 import io
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route("/upload", methods=["POST"])
 def upload():
