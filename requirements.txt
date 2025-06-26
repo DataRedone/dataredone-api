@@ -4,3 +4,4 @@ weasyprint
 pandas
 gunicorn
 flask-cors
+sendgrid
