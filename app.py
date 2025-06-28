@@ -52,13 +52,24 @@ def upload():
         encoded_pdf = base64.b64encode(pdf_file.read()).decode()
 
         # Build the email
-message = Mail(
-        from_email='hey@dataredone.com',
+try:
+    message = Mail(
+        from_email="hey@dataredone.com",
         to_emails=email,
-        subject='Your DataRedone Keyword Report',
-        html_content='Your PDF report is attached. Thanks for trying DataRedone!'
-)
-message.reply_to = 'hey@dataredone.com'
+        subject="Your DataRedone Keyword Report",
+        plain_text_content="Attached is your keyword report PDF.",
+        html_content="<strong>Attached is your keyword report PDF.</strong>"
+    )
+    message.reply_to = "hey@dataredone.com"
+    message.add_attachment(attachment)
+
+    sg = SendGridAPIClient(os.environ.get("SENDGRID_API_KEY"))
+    response = sg.send(message)
+    print(response.status_code)
+    print(response.body)
+    print(response.headers)
+except Exception as e:
+    print(f"❌ Email failed: {e}")
 
 
         attachment = Attachment(
