@@ -45,7 +45,9 @@ def upload():
     pdf_file = io.BytesIO()
     HTML(string=html_out).write_pdf(pdf_file)
     pdf_file.seek(0)
-    encoded_pdf = pdf_file.read()
+    import base64
+# ...
+encoded_pdf = base64.b64encode(pdf_file.read()).decode()
 
     message = Mail(
         from_email='reports@dataredone.com',
