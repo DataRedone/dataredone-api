@@ -50,11 +50,12 @@ def upload():
 encoded_pdf = base64.b64encode(pdf_file.read()).decode()
 
 message = Mail(
-        from_email='reports@dataredone.com',
-        to_emails=email,
-        subject='Your DataRedone Keyword Report',
-        html_content='Your PDF report is attached. Thanks for trying DataRedone!'
-    )
+    from_email='your@email.com',
+    to_emails=email,
+    subject='Your DataRedone Keyword Report',
+    html_content='Your PDF report is attached. Thanks for trying DataRedone!'
+)
+
 
    attachment = Attachment(
     FileContent(encoded_pdf),
