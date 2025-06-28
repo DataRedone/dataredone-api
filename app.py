@@ -56,13 +56,14 @@ encoded_pdf = base64.b64encode(pdf_file.read()).decode()
         html_content='Your PDF report is attached. Thanks for trying DataRedone!'
     )
 
-    attachment = Attachment(
-        FileContent(encoded_pdf),
-        FileName("DataRedone_Keyword_Report.pdf"),
-        FileType("application/pdf"),
-        Disposition("attachment")
-    )
-    message.attachment = attachment
+   attachment = Attachment(
+    FileContent(encoded_pdf),
+    FileName("DataRedone_Keyword_Report.pdf"),
+    FileType("application/pdf"),
+    Disposition("attachment")
+)
+message.attachment = attachment
+
 
     try:
         sg = SendGridAPIClient(SENDGRID_API_KEY)
